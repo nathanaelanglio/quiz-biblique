@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Quiz biblique</title>
-<meta name="description" content="Le grand quiz biblique des équipes, animé par Joël, pour les enfants de 5 à 15 ans.">
+<title>Le Grand Quiz de Joël</title>
+<meta name="description" content="Le Grand Quiz de Joël : le quiz biblique des équipes, pour les enfants de 5 à 15 ans.">
 <style>
 
 /* Maquette : un look unique et assumé (scène sombre par niveau), pas de bascule clair/sombre. */
@@ -784,7 +784,7 @@ R.accueil=function(){
         +(cfg.niveau==='melange'&&on?'<button class="tag-niv" data-act="niveq" data-v="'+e.k+'" style="background:'+NIV[nv].coul+'" aria-label="Niveau de '+esc(e.n)+' : '+NIV[nv].nom+'">'+NIV[nv].nom+'</button>':'')
         +'</div>'}).join('');
   return '<div class="ecran ecran-accueil">'
-   +'<header class="ac-titre"><h1>Quiz biblique</h1><p>Le grand jeu des équipes, animé par Joël</p><p class="bulle-court">Touchez une équipe pour l\'ajouter ou la retirer.</p></header>'
+   +'<header class="ac-titre"><h1>Le Grand Quiz de Joël</h1><p>Le quiz biblique des équipes, de 5 à 15 ans</p><p class="bulle-court">Touchez une équipe pour l\'ajouter ou la retirer.</p></header>'
    +guide('',TXT.accueil)
    +'<section class="ac-bloc ac-mode"><h2>1. Où joue-t-on ?</h2><div class="seg-ligne">'
      +seg('mode','tv',cfg.mode==='tv','Grand écran<small>sur la télé, un adulte mène</small>')
