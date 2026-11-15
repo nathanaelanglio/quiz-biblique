@@ -271,6 +271,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .tel .marche .qui .pts{font-size:15px;color:var(--accent)}
 .tel .marche .socle{font-size:36px;padding-top:6px;border-radius:14px 14px 0 0;border-top-width:8px}
 .tel .m1 .socle{height:130px}.tel .m2 .socle{height:96px}.tel .m3 .socle{height:70px}
+.tv .marche.r1 .socle{height:300px}.tv .marche.r2 .socle{height:220px}.tv .marche.r3 .socle{height:160px}
+.tel .marche.r1 .socle{height:130px}.tel .marche.r2 .socle{height:96px}.tel .marche.r3 .socle{height:70px}
 .tel .tous{gap:6px}
 .tel .tous p{font-size:15px;font-weight:700;margin:0;width:100%}
 
@@ -454,6 +456,182 @@ button{font:inherit;color:inherit;cursor:pointer}
 #scene.tv .bandeau{padding-right:112px}
 #scene.tel .ecran{padding-top:62px}
 
+/* ====== THÈME « relief doux » (Léa, 15/11/2026) : modernisation, couche finale ======
+   Le bord encre et l'ombre noire décalée (autocollant, 2022-2023) laissent place à un relief
+   teinté : filet clair de la couleur du niveau, « lèvre » pleine en dessous, ombre ambiante douce.
+   Aucune taille ni marge ne change : les mesures de débordement du 14/11 restent valables. */
+#scene{--papier:#FBF8F2;--sur-carte:#FFFFFF;--douce:0 2px 4px rgba(36,28,48,.06),0 10px 28px rgba(36,28,48,.10);--ko:#6B6478;
+  background:radial-gradient(60% 70% at 0% 100%,var(--niv-clair) 0%,rgba(255,255,255,0) 72%),radial-gradient(45% 55% at 100% 0%,var(--niv-clair) 0%,rgba(255,255,255,0) 70%),linear-gradient(180deg,#FDFBF7 0%,var(--papier) 100%)}
+#scene.tel{background:radial-gradient(90% 40% at 0% 100%,var(--niv-clair) 0%,rgba(255,255,255,0) 75%),radial-gradient(80% 30% at 100% 0%,var(--niv-clair) 0%,rgba(255,255,255,0) 75%),linear-gradient(180deg,#FDFBF7 0%,var(--papier) 100%)}
+#scene.niv-petits{--niv-fonce:#115330;--bord:#B9D8BC;--vif-fonce:#C98F00}
+#scene.niv-moyens{--niv-fonce:#17428C;--bord:#B6C9EA;--vif-fonce:#C76F00}
+#scene.niv-grands{--niv-fonce:#552A78;--bord:#CDB9E0;--vif-fonce:#1A9384}
+#scene .q-texte,#scene .ac-titre h1,#scene .po-titre,#scene .titre-rep,#scene .nom-eq{letter-spacing:-.02em;font-weight:800}
+/* Relief commun */
+#scene .tour,#scene .carte-choix,#scene .joker,#scene .eq-champ,#scene .revele,#scene .explic,#scene .marche .socle,#scene .seg,#scene .secondaire,#scene .puce{border:2px solid var(--bord)}
+#scene .tour{box-shadow:0 4px 0 var(--bord),var(--douce)}
+#scene.tel .tour{box-shadow:0 3px 0 var(--bord)}
+#scene.tv .carte-choix{border-width:3px;box-shadow:0 7px 0 var(--bord),var(--douce)}
+#scene.tel .carte-choix{border-width:2px;box-shadow:0 4px 0 var(--bord)}
+#scene .carte-choix{transition:transform .14s cubic-bezier(.3,.7,.4,1),box-shadow .14s ease,border-color .14s ease}
+#scene .carte-choix[data-act]:hover{transform:translateY(-3px);border-color:var(--niv)}
+#scene.tv .carte-choix[data-act]:active{transform:translateY(6px);box-shadow:0 1px 0 var(--bord)}
+#scene.tel .carte-choix[data-act]:active{transform:translateY(3px);box-shadow:0 1px 0 var(--bord)}
+#scene .carte-choix .lettre{border:0;background:var(--niv);color:#FFFFFF;box-shadow:inset 0 -4px 0 var(--niv-fonce)}
+#scene.tel .carte-choix .lettre{box-shadow:inset 0 -3px 0 var(--niv-fonce)}
+#scene .carte-choix.bonne{border-color:var(--ok);background:var(--ok-clair);box-shadow:0 6px 0 #0E5A31,var(--douce)}
+#scene.tel .carte-choix.bonne{box-shadow:0 4px 0 #0E5A31}
+#scene .carte-choix.bonne .lettre{background:var(--ok);box-shadow:inset 0 -4px 0 #0E5A31}
+#scene .carte-choix.choisie-ko{border:3px dashed var(--ko);background:#F4EFE7;box-shadow:none}
+#scene .carte-choix.eteinte{opacity:.5;box-shadow:none}
+#scene .etiq{box-shadow:0 3px 0 #0E5A31}
+#scene .etiq.neutre{box-shadow:0 3px 0 #000}
+#scene .illu{border-width:3px}
+/* Bulle de Joël : carte blanche, queue au même filet */
+#scene .bulle-txt{border:2px solid var(--bord);box-shadow:var(--douce)}
+#scene .bulle-txt::before{border-top-color:var(--bord)}
+#scene.tel .bulle-txt::before{border-top-color:transparent;border-right-color:var(--bord)}
+#scene.tel .bulle-txt{box-shadow:0 3px 0 var(--bord)}
+/* Minuteur : disque blanc posé, anneau de niveau */
+#scene .minuteur{box-shadow:0 0 0 2px var(--bord),0 4px 0 2px var(--bord),var(--douce)}
+#scene .minuteur svg circle:first-child{stroke:var(--niv-clair)}
+/* Scores */
+#scene .puce{background:#FFFFFF}
+#scene .puce.actif{background:var(--niv);color:#FFFFFF;border-color:var(--niv-fonce);box-shadow:0 3px 0 var(--niv-fonce)}
+/* Boutons : aplat vif, lèvre de la même famille */
+#scene .cta{border:0;background:var(--vif);color:var(--encre);box-shadow:0 6px 0 var(--vif-fonce),var(--douce);transition:transform .12s ease,box-shadow .12s ease}
+#scene.tel .cta{box-shadow:0 4px 0 var(--vif-fonce)}
+#scene .cta:hover{transform:translateY(-2px)}
+#scene .cta:active{transform:translateY(5px);box-shadow:0 1px 0 var(--vif-fonce)}
+#scene .secondaire{background:#FFFFFF;color:var(--encre);box-shadow:0 4px 0 var(--bord)}
+#scene .joker{background:#FFFFFF;color:var(--encre);box-shadow:0 4px 0 var(--bord)}
+#scene.tel .joker{box-shadow:0 3px 0 var(--bord)}
+#scene .joker .j-ico{background:var(--niv);color:#FFFFFF;border:0;box-shadow:inset 0 -3px 0 var(--niv-fonce)}
+#scene .joker[disabled]{opacity:.55;box-shadow:none;border-style:dashed}
+#scene .joker[disabled] .j-ico{background:var(--niv-clair);color:var(--encre);box-shadow:none}
+#scene .ouverte{background:#FFFFFF;border:3px dashed var(--bord);box-shadow:var(--douce)}
+/* Réponse */
+#scene .gain{border:0;box-shadow:0 4px 0 var(--vif-fonce)}
+#scene .explic{border-left:12px solid var(--niv);box-shadow:var(--douce)}
+#scene.tel .explic{border-left-width:7px;box-shadow:none}
+#scene .verset{background:var(--niv-clair);color:var(--encre);border:2px solid var(--bord)}
+#scene .revele{box-shadow:0 5px 0 var(--bord),var(--douce)}
+#scene .juge button{border:2px solid var(--bord);box-shadow:0 4px 0 var(--bord)}
+#scene .juge button.choisi{background:var(--encre);color:#FFFFFF;border-color:var(--encre);box-shadow:0 4px 0 #000}
+/* Accueil */
+#scene .ac-titre h1{background:linear-gradient(transparent 66%,var(--vif) 66%,var(--vif) 88%,transparent 88%);border-radius:.08em}
+#scene .ac-bloc h2{opacity:1;color:#5A5468;letter-spacing:.08em}
+#scene .seg{background:#FFFFFF;color:var(--encre);box-shadow:0 4px 0 var(--bord);transition:transform .12s ease,box-shadow .12s ease}
+#scene .seg:active{transform:translateY(3px);box-shadow:0 1px 0 var(--bord)}
+#scene .seg[aria-pressed="true"]{background:var(--niv)!important;color:#FFFFFF!important;border-color:var(--niv-fonce)!important;box-shadow:0 4px 0 var(--niv-fonce)}
+#scene .eq-champ{box-shadow:0 4px 0 var(--bord)}
+#scene .eq-champ.inactive{opacity:.6;background:#F4EFE7;border-style:dashed;box-shadow:none}
+/* Tour suivant : fond d'équipe avec une lumière douce, forme sur médaillon blanc */
+#scene .ecran-tour{background:radial-gradient(55% 60% at 62% 42%,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 70%),var(--c)}
+#scene .ecran-tour .centre .forme{box-shadow:0 0 0 .07em rgba(255,255,255,.35),0 .06em 0 .07em rgba(0,0,0,.18)}
+#scene .ecran-tour .puce{border:2px solid rgba(255,255,255,.9)}
+#scene .ecran-tour .puce.actif{background:var(--encre);color:#FFFFFF;border-color:var(--encre);box-shadow:none}
+#scene .ecran-tour .cta{background:#FFFFFF;color:var(--encre);box-shadow:0 6px 0 rgba(0,0,0,.28)}
+#scene .ecran-tour .bulle-txt{border-color:#FFFFFF}
+#scene .ecran-tour .bulle-txt::before{border-top-color:#FFFFFF}
+#scene.tel .ecran-tour .bulle-txt::before{border-top-color:transparent;border-right-color:#FFFFFF}
+/* Podium */
+#scene .marche .socle{border-top:16px solid var(--c);box-shadow:0 6px 0 var(--bord),var(--douce)}
+#scene .tous .puce{border-color:var(--bord)}
+/* Temps presque écoulé (classe posée par le moteur) : chiffre et arc passent au rouge, en plus du pouls */
+#scene.temps-court .minuteur .chiffre{color:#B3261E}
+#scene.temps-court .minuteur #arc{stroke:#D7263D}
+/* Hors scène : boutons Réécouter / Son et écran d'entrée (spécificité relevée : le jeu les redéfinit après) */
+body #commandes button{background:#FFFFFF;color:#241C30;border:2px solid #D9D2E3;box-shadow:0 3px 0 #D9D2E3,0 6px 16px rgba(36,28,48,.10)}
+body .lancer{background:rgba(251,248,242,.97);color:#241C30}
+body .lancer button{border:0;box-shadow:0 6px 0 #C98F00,0 10px 28px rgba(36,28,48,.14)}
+
+/* ====== JOËL : mise en scène et mouvements (Léa, 15/11/2026) ======
+   L'apparence ne change pas : seules des enveloppes (.j-react, .hoche, .geste-g, .geste-d) bougent.
+   Cadrage « caméra » = propriété scale de .guide, pied comme point fixe, donc il ne descend jamais vers
+   le texte. Entrées et sorties = propriété translate + opacité. Tout passe par transform et opacity. */
+.guide{transform-origin:50% 100%}
+.guide .j-react{transform-box:view-box;transform-origin:100px 262px}
+.guide .hoche{transform-box:view-box;transform-origin:100px 80px}
+.guide .geste-g,.guide .geste-d{transform-box:fill-box;transform-origin:50% 5%}
+.guide .j-ombre{transform-box:fill-box;transform-origin:center}
+/* Cadrage fixe par écran : on s'approche pour la question et l'annonce du tour, on recule pour accueillir et pour le podium */
+/* Mesuré au grand écran (g22, 6 équipes) : au-delà de 1,05 en question et 1,04 au tour, la queue de la bulle touche les cheveux */
+.ecran-question .guide{scale:1.05}
+.ecran-tour .guide{scale:1.04}
+.ecran-accueil .guide,.ecran-podium .guide{scale:.92}
+/* Bulle remontée au grand écran (Léa, 15/11) : le temps court et le saut de joie touchaient la queue de la bulle.
+   Mesuré : 18 px de marge en temps court, 20 px à la pirouette, 5 px en saut en boucle ; bulle la plus longue à 19 px du bandeau */
+#scene.tv .ecran-question .zone-guide{gap:56px}
+#scene.tv .ecran-reponse .zone-guide{gap:70px}
+@media (prefers-reduced-motion:no-preference){
+  /* Entrée de scène (seulement quand l'écran change : classe .transition-entree posée par le moteur) */
+  /* Il entre en scène à l'accueil, à chaque annonce de tour et au podium ; entre la question et la réponse il reste là */
+  #scene.transition-entree .ecran-tour .guide{animation:j-entre .62s cubic-bezier(.2,1.4,.4,1) both,j-zoom-avant .9s cubic-bezier(.3,1.3,.4,1) .15s both}
+  #scene.transition-entree .ecran-question .guide{animation:j-zoom-avant .8s cubic-bezier(.3,1.3,.4,1) both}
+  #scene.transition-entree .ecran-accueil .guide,#scene.transition-entree .ecran-podium .guide{animation:j-entre .62s cubic-bezier(.2,1.4,.4,1) both,j-recul 1s cubic-bezier(.3,1.2,.4,1) .1s both}
+  #scene.transition-entree .bulle-txt{animation:j-bulle .45s cubic-bezier(.2,1.5,.4,1) .3s both}
+  /* Sortie de scène (classe .joel--sort posée sur la scène 280 ms avant de changer d'écran) */
+  #scene.joel--sort .guide{animation:j-sort .26s cubic-bezier(.5,0,.8,.4) both}
+  #scene.joel--sort .bulle-txt{animation:j-sort-bulle .2s ease-in both}
+  /* Pendant qu'il parle : la tête accompagne la phrase, les bras font des gestes d'animateur */
+  .guide.parle .hoche{animation:j-hoche 1.15s ease-in-out infinite alternate}
+  .guide.parle .geste-d{animation:j-main-d 1.3s ease-in-out infinite alternate}
+  .guide.parle .geste-g{animation:j-main-g 1.7s ease-in-out .3s infinite alternate}
+  /* Bonne réponse : pirouette d'élan (le saut en boucle existant continue ensuite) */
+  .ecran-reponse .guide.joie .j-react{animation:j-bravo .9s cubic-bezier(.3,1.2,.4,1) both}
+  .ecran-reponse .guide.joie{animation:j-zoom-joie .9s cubic-bezier(.3,1.4,.4,1) both}
+  /* Le saut en boucle attend la fin de la pirouette : les deux sur des enveloppes imbriquées s'additionnaient (tête sur le texte) */
+  .ecran-reponse .guide.joie .corps-anim{animation-delay:.9s}
+  /* Mauvaise réponse : il se penche avec douceur vers les enfants, hoche la tête, puis se redresse */
+  .guide.encourage .j-react{animation:j-encourage 1.6s ease-in-out both}
+  .guide.encourage:not(.parle) .hoche{animation:j-oui 1.6s ease-in-out .2s both}
+  /* Suspense : les cinq dernières secondes, petit trépignement et caméra qui se resserre */
+  #scene.temps-court .guide .j-react{animation:j-trepigne .5s ease-in-out infinite}
+  #scene.temps-court .ecran-question .guide{animation:j-serre .5s ease-in-out infinite alternate}
+  #scene.temps-court .minuteur{animation:j-pouls .5s ease-in-out infinite alternate}
+  /* Podium : il recule pour faire de la place, puis salue */
+  .ecran-podium .guide.joie .geste-d{animation:j-salut .7s ease-in-out .9s 4 alternate}
+  /* Transitions des contenus quand l'écran change */
+  #scene.transition-entree .bandeau{animation:c-descend .45s cubic-bezier(.2,1.2,.4,1) both}
+  #scene.transition-entree .q-texte,#scene.transition-entree .titre-rep{animation:c-monte .45s cubic-bezier(.2,1,.4,1) .08s both}
+  #scene.transition-entree .carte-choix,#scene.transition-entree .seg,#scene.transition-entree .eq-champ{animation:c-monte .42s cubic-bezier(.2,1.3,.4,1) both}
+  #scene.transition-entree .carte-choix:nth-child(1){animation-delay:.16s}
+  #scene.transition-entree .carte-choix:nth-child(2){animation-delay:.23s}
+  #scene.transition-entree .carte-choix:nth-child(3){animation-delay:.30s}
+  #scene.transition-entree .carte-choix:nth-child(4){animation-delay:.37s}
+  #scene.transition-entree .explic,#scene.transition-entree .revele,#scene.transition-entree .ouverte,#scene.transition-entree .jokers{animation:c-monte .45s cubic-bezier(.2,1,.4,1) .4s both}
+  #scene.transition-entree .ecran-tour .centre{animation:c-pop .6s cubic-bezier(.2,1.5,.4,1) .05s both}
+  #scene.transition-entree .marche{animation:c-monte-loin .7s cubic-bezier(.2,1.3,.4,1) both}
+  #scene.transition-entree .marche.m3{animation-delay:.25s}
+  #scene.transition-entree .marche.m2{animation-delay:.5s}
+  #scene.transition-entree .marche.m1{animation-delay:.8s}
+  #scene .gain{animation:c-pop .5s cubic-bezier(.2,1.6,.4,1) .2s both}
+  #scene .etiq{animation:c-pop .4s cubic-bezier(.2,1.6,.4,1) .15s both}
+  .tel .choix-petits .etiq{animation:none}
+}
+@keyframes j-entre{from{translate:0 18%;opacity:0}to{translate:0 0;opacity:1}}
+@keyframes j-sort{to{translate:0 14%;opacity:0}}
+@keyframes j-sort-bulle{to{opacity:0;scale:.9}}
+@keyframes j-bulle{from{opacity:0;scale:.82}to{opacity:1;scale:1}}
+@keyframes j-zoom-avant{from{scale:.9}}
+@keyframes j-recul{from{scale:1.06}}
+@keyframes j-zoom-joie{0%{scale:1}35%{scale:1.03}100%{scale:1}}
+@keyframes j-serre{to{scale:1.065}}
+@keyframes j-hoche{0%{transform:rotate(-2.5deg) translateY(0)}50%{transform:rotate(1deg) translateY(1.2px)}100%{transform:rotate(3deg) translateY(-.6px)}}
+@keyframes j-main-d{0%{transform:rotate(0)}100%{transform:rotate(-22deg)}}
+@keyframes j-main-g{0%{transform:rotate(0)}100%{transform:rotate(12deg)}}
+@keyframes j-bravo{0%{transform:translateY(0) rotate(0) scale(1,1)}15%{transform:translateY(4px) rotate(0) scale(1.08,.9)}45%{transform:translateY(-12px) rotate(-9deg) scale(.96,1.05)}70%{transform:translateY(-4px) rotate(7deg) scale(1,1)}100%{transform:translateY(0) rotate(0) scale(1,1)}}
+@keyframes j-encourage{0%,100%{transform:rotate(0) translateX(0)}35%,65%{transform:rotate(5deg) translateX(4px)}}
+@keyframes j-oui{0%,100%{transform:rotate(0)}25%{transform:rotate(-4deg) translateY(2px)}50%{transform:rotate(0)}75%{transform:rotate(-4deg) translateY(2px)}}
+@keyframes j-trepigne{0%,100%{transform:translateY(0) rotate(0)}25%{transform:translateY(-3px) rotate(-1.5deg)}75%{transform:translateY(-3px) rotate(1.5deg)}}
+@keyframes j-pouls{from{scale:1}to{scale:1.08}}
+@keyframes j-salut{from{transform:rotate(0)}to{transform:rotate(-24deg)}}
+@keyframes c-descend{from{translate:0 -24px;opacity:0}to{translate:0 0;opacity:1}}
+@keyframes c-monte{from{translate:0 22px;opacity:0}to{translate:0 0;opacity:1}}
+@keyframes c-monte-loin{from{translate:0 60px;opacity:0}to{translate:0 0;opacity:1}}
+@keyframes c-pop{0%{scale:.7;opacity:0}100%{scale:1;opacity:1}}
+
 
 /* ---------- Ajouts du jeu (au-dessus de la maquette de Léa) ---------- */
 #commandes{position:fixed;right:calc(12px + env(safe-area-inset-right,0px));top:calc(12px + env(safe-area-inset-top,0px));z-index:20;display:flex;gap:8px}
@@ -517,7 +695,8 @@ button{font:inherit;color:inherit;cursor:pointer}
   <radialGradient id="jb-iris" cx=".45" cy=".4" r=".6"><stop offset="0" stop-color="#8A5A36"/><stop offset="1" stop-color="#3A2214"/></radialGradient>
   <radialGradient id="jb-ombre" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#000" stop-opacity=".32"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
  </defs>
- <ellipse cx="100" cy="267" rx="50" ry="9" fill="url(#jb-ombre)"/>
+ <ellipse class="j-ombre" cx="100" cy="267" rx="50" ry="9" fill="url(#jb-ombre)"/>
+ <g class="j-react">
  <g class="corps-anim">
   <g class="corps">
    <path d="M75 150 H125 Q126 200 120 253 Q111 258 102 253 L100.6 182 H99.4 L98 253 Q89 258 80 253 Q74 200 75 150 Z" fill="url(#jb-pant)"/>
@@ -534,17 +713,17 @@ button{font:inherit;color:inherit;cursor:pointer}
    <path d="M100 96 V117" stroke="#15675C" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>
    <circle cx="100" cy="104" r="1.9" fill="#F4F1EA"/><circle cx="100" cy="112" r="1.9" fill="#F4F1EA"/>
   </g>
-  <g class="bras-g">
+  <g class="geste-g"><g class="bras-g">
    <path d="M57 120 Q54 146 58 168 Q64 172 70 168 Q73 146 72 122 Z" fill="url(#jb-peau)"/>
    <ellipse cx="64" cy="176" rx="8.5" ry="9.5" fill="url(#jb-peau)"/>
    <path d="M70 90 Q58 92 56 108 L55 124 Q64 129 74 124 L76 100 Z" fill="url(#jb-polo)"/>
-  </g>
-  <g class="bras-d">
+  </g></g>
+  <g class="geste-d"><g class="bras-d">
    <path d="M143 120 Q146 146 142 168 Q136 172 130 168 Q127 146 128 122 Z" fill="url(#jb-peau)"/>
    <ellipse cx="136" cy="176" rx="8.5" ry="9.5" fill="url(#jb-peau)"/>
    <path d="M130 90 Q142 92 144 108 L145 124 Q136 129 126 124 L124 100 Z" fill="url(#jb-polo)"/>
-  </g>
-  <g class="tete"><g class="tete-voix">
+  </g></g>
+  <g class="hoche"><g class="tete"><g class="tete-voix">
    <ellipse cx="78.5" cy="47" rx="5" ry="8" fill="url(#jb-peau)"/><ellipse cx="121.5" cy="47" rx="5" ry="8" fill="url(#jb-peau)"/>
    <path d="M78 44 Q78 18 100 18 Q122 18 122 44 Q122 62 112 69 Q100 76 88 69 Q78 62 78 44 Z" fill="url(#jb-peau)"/>
    <ellipse cx="87" cy="55" rx="5.5" ry="3.2" fill="#D0705A" opacity=".28"/><ellipse cx="113" cy="55" rx="5.5" ry="3.2" fill="#D0705A" opacity=".28"/>
@@ -561,7 +740,8 @@ button{font:inherit;color:inherit;cursor:pointer}
    <path class="bouche-repos" d="M93 60 Q100 64.5 107 60" fill="none" stroke="#5A2A1E" stroke-width="2" stroke-linecap="round"/>
    <g class="bouche-parle"><path d="M93 59 Q100 60.6 107 59 Q106 68 100 68 Q94 68 93 59 Z" fill="#5A1E26"/><path d="M94.8 59.7 Q100 61.1 105.2 59.7 L104.6 61.6 Q100 62.7 95.4 61.6 Z" fill="#fff"/><ellipse cx="100" cy="65.7" rx="3.4" ry="1.5" fill="#D06A78"/></g>
    <g class="bouche-joie"><path d="M92 58.5 Q100 60.5 108 58.5 Q107 69.5 100 69.5 Q93 69.5 92 58.5 Z" fill="#5A1E26"/><path d="M93.6 59.3 Q100 61 106.4 59.3 L105.7 62 Q100 63.2 94.3 62 Z" fill="#fff"/><ellipse cx="100" cy="66.8" rx="4" ry="1.8" fill="#D06A78"/></g>
-  </g></g>
+  </g></g></g>
+ </g>
  </g>
  <g class="etincelles" fill="#FFC93C" stroke="#241C30" stroke-width="2.5" stroke-linejoin="round">
   <path d="M24 26 L28 36 L38 40 L28 44 L24 54 L20 44 L10 40 L20 36 Z"/>
@@ -583,7 +763,7 @@ var DONNEES={"questions":[{"id":"p01","niveau":"petits","type":"qcm","question":
 var Q=DONNEES.questions, ILLU=DONNEES.illustrations||{}, TXT=DONNEES.textes, VOIX=DONNEES.voixDispo||{};
 var EQUIPES=DONNEES.equipes, TOUS=DONNEES.tous;
 var NIV={petits:{nom:'Petits',age:'5 à 7 ans',coul:'#1B7A44',duree:30},moyens:{nom:'Moyens',age:'8 à 11 ans',coul:'#2563C9',duree:25},grands:{nom:'Grands',age:'12 à 15 ans',coul:'#7A3FA8',duree:30}};
-var GAINS={jingle:.32,podium:.43,juste:.35,joker:.36,tour:.26,faux:.27,'fin-temps':.27,tictac:.1}; // protocole de Milo (ebur128 stereo, mediane voix -10 LUFS M), 15/11
+var GAINS={jingle:.335,podium:.548,juste:.51,joker:.36,tour:.43,faux:.42,'fin-temps':.44,tictac:.1,'whoosh-avant':.32,entree:.40}; // sons v2 de Milo, gains mesurés (ebur128 stéréo, médiane voix −10 LUFS M), jingle plafonné à l'ancien, 15/11
 
 /* ---------- Stockage local (facultatif) ---------- */
 function lire(k,d){try{var v=localStorage.getItem('quizbib.'+k);return v?JSON.parse(v):d}catch(e){return d}}
@@ -599,7 +779,7 @@ var ecran='accueil';
 /* ---------- Outils d'affichage (repris de la maquette de Léa) ---------- */
 var scene=document.getElementById('scene'), tpl=document.getElementById('tpl-guide').innerHTML;
 var FORMES={rond:'<circle cx="12" cy="12" r="9.5"/>',carre:'<rect x="2.8" y="2.8" width="18.4" height="18.4" rx="2.5"/>',triangle:'<path d="M12 2.2 L22 20.8 H2 Z"/>',losange:'<path d="M12 1.5 L22.5 12 L12 22.5 L1.5 12 Z"/>',hexagone:'<path d="M7 2.5 H17 L22 12 L17 21.5 H7 L2 12 Z"/>',feuille:'<path d="M3 21 C3 9 9 3 21 3 C21 15 15 21 3 21 Z"/>'};
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/ ([!?:;»])/g,' $1').replace(/« /g,'« ')} // espaces fines insécables à l'affichage (Léa, 15/11)
 function forme(eq){var f=FORMES[eq.f];return '<svg class="forme" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round">'+f+'</g><g fill="'+eq.c+'" stroke="#241C30" stroke-width="1.8" stroke-linejoin="round">'+f+'</g></svg>'}
 function puce(eq,actif){return '<span class="puce'+(actif?' actif':'')+'">'+forme(eq)+'<span class="n">'+esc(eq.n)+'</span><span class="pts">'+eq.s+'</span></span>'}
 function scores(actif){return '<div class="scores" aria-label="Scores">'+P.eq.map(function(e,i){return puce(e,i===actif)}).join('')+'</div>'}
@@ -624,17 +804,21 @@ function effet(nom){
   if(nom==='tictac'&&AC&&tictacBuf){var s=AC.createBufferSource(),g=AC.createGain();g.gain.value=GAINS.tictac;s.buffer=tictacBuf;s.connect(g);g.connect(AC.destination);s.start();return}
   try{var a=effets[nom]||(effets[nom]=new Audio('sons/'+nom+(nom==='tictac'?'.ogg':'.mp3')));a.volume=GAINS[nom]||.5;a.currentTime=0;a.play().catch(function(){})}catch(e){}
 }
-// Joue un effet et n'appelle la suite qu'une fois l'effet terminé : la voix de Joël ne passe jamais sous la musique
-// (remarque du Président, 15/11/2026). Filet de sécurité si l'événement de fin n'arrive pas.
-function effetPuis(nom,suite,maxMs){
-  var fait=false;function go(){if(fait)return;fait=true;suite()}
+// Montage de Milo (15/11/2026) : chaque effet a un point d'entrée de la voix, en ms depuis le début RÉEL de l'effet
+// (événement playing, pas l'appel à play). L'effet est écrit pour être à −12 dB sous sa crête à la 1re syllabe.
+// La voix suivante est préchargée pendant l'effet. Filet : point d'entrée + 1000 ms depuis l'appel.
+var ENTREE={jingle:2000,tour:530,juste:640,faux:540,'fin-temps':620,joker:710,podium:2510,'whoosh-avant':240,entree:510};
+function effetPuis(nom,suite,precharge){
+  var fait=false,ms=ENTREE[nom]||600;function go(){if(fait)return;fait=true;suite()}
+  if(precharge)prechargerVoix(precharge);
   if(!son){setTimeout(go,300);return}
   effet(nom);var a=effets[nom];
-  if(a){a.onended=function(){setTimeout(go,200)}}
-  setTimeout(go,maxMs||6000);
+  if(a){var lance=function(){a.removeEventListener('playing',lance);setTimeout(go,ms)};a.addEventListener('playing',lance)}
+  setTimeout(go,ms+1000);
 }
 var lecteur=new Audio(), sourceBranchee=false, file=[], parleEnCours=false, derniereFile=[], jeton=0, simule=false;
 lecteur.preload='auto';
+function prechargerVoix(k){if(!son||!VOIX[k])return;try{var u='voix/'+k+'.mp3';if(lecteur.src.slice(-u.length)!==u){lecteur.src=u;lecteur.load()}}catch(e){}}
 function brancher(){
   if(sourceBranchee||!ctx()||location.protocol==='file:')return;
   try{var s=AC.createMediaElementSource(lecteur);s.connect(analyseur);sourceBranchee=true}catch(e){}
@@ -653,7 +837,7 @@ function dire(cles,fin){ // cles : liste de clés de TXT, lues à la suite
     parleEnCours=true;etatGuide(['parle']);
     if(VOIX[k]){
       brancher();simule=!sourceBranchee;
-      lecteur.src='voix/'+k+'.mp3';lecteur.volume=1;
+      var u='voix/'+k+'.mp3';if(lecteur.src.slice(-u.length)!==u)lecteur.src=u;else try{lecteur.currentTime=0}catch(e){}lecteur.volume=1;
       lecteur.onended=function(){setTimeout(suivant,250)};
       lecteur.onerror=function(){synthese(txt,function(){setTimeout(suivant,250)})};
       var p=lecteur.play();if(p&&p.catch)p.catch(function(){synthese(txt,function(){setTimeout(suivant,250)})});
@@ -717,7 +901,7 @@ function lancerTour(){
   P.q=tirer(eq.niv,P.poses);P.poses.push(P.q);P.n++;P.ok=null;P.retirees=[];P.reponse=null;P.juge=null;
   if(P.eq.length>1||P.n===1){ecran='tour';rendre();
     var cles=[];if(P.n===1)cles.push(cfg.jeu==='tous'?'debut-tous':'debut');cles.push('tour-'+eq.k);
-    effetPuis('tour',function(){if(ecran==='tour')dire(cles)},1300);}
+    effetPuis('tour',function(){if(ecran==='tour')dire(cles)},cles[0]);}
   else poser();
 }
 function poser(){
@@ -726,56 +910,65 @@ function poser(){
   ecran='question';rendre();
   var cles=[];if(P.n===P.total&&P.total>1)cles.push('derniere');cles.push('q-'+P.q.id);if(P.q.type==='ouverte')cles.push('ouverte');
   majMinuteur();
-  dire(cles,function(){demarrerMinuteur()});
+  effetPuis('whoosh-avant',function(){if(ecran==='question')dire(cles,function(){demarrerMinuteur()})},cles[0]);
 }
 function demarrerMinuteur(){
   if(!P||ecran!=='question'||!P.duree||P.tic)return;
   P.tic=setInterval(function(){
     P.reste--;majMinuteur();
     if(P.reste<=5&&P.reste>0)effet('tictac');
-    if(P.reste<=0){stopMinuteur();effet('fin-temps');
+    if(P.reste<=0){stopMinuteur();
       if(P.q.type==='ouverte'){reveler(true)}else{repondre(-1,true)}}
   },1000);
 }
-function stopMinuteur(){if(P&&P.tic){clearInterval(P.tic);P.tic=null}}
+function stopMinuteur(){if(P&&P.tic){clearInterval(P.tic);P.tic=null}scene.classList.remove('temps-court')}
 function majMinuteur(){
   var ch=document.getElementById('chiffre'),arc=document.getElementById('arc');if(!ch||!arc)return;
   var c=2*Math.PI*44;ch.textContent=P.reste;arc.setAttribute('stroke-dasharray',(c*(P.duree?P.reste/P.duree:0)).toFixed(1)+' '+c.toFixed(1));
   ch.parentNode.setAttribute('aria-label',P.reste+' secondes');
+  scene.classList.toggle('temps-court',!!P.tic&&P.reste>0&&P.reste<=5);
 }
 function repondre(i,temps){
   if(ecran!=='question'||P.q.type==='ouverte')return;
   stopMinuteur();P.reponse=i;P.ok=(i===P.q.bonne);
   if(P.ok)eqCourante().s+=10;
   ecran='reponse';rendre();
-  var r=1+Math.floor(Math.random()*3);
-  effetPuis(P.ok?'juste':'faux',function(){if(ecran==='reponse')dire([temps?'temps':(P.ok?'bravo-'+r:'encourage-'+r),'e-'+P.q.id])},1300);
+  var r=1+Math.floor(Math.random()*3),k1=temps?'temps':(P.ok?'bravo-'+r:'encourage-'+r);
+  // Temps écoulé : la cloche de fin joue seule, jamais « faux » par-dessus (Milo, 15/11)
+  effetPuis(temps?'fin-temps':(P.ok?'juste':'faux'),function(){if(ecran==='reponse')dire([k1,'e-'+P.q.id])},k1);
 }
 function reveler(temps){
   if(ecran!=='question')return;
   stopMinuteur();ecran='reponse';P.ok=null;rendre();
-  dire([temps?'temps':'revele','e-'+P.q.id]);
+  if(temps)effetPuis('fin-temps',function(){if(ecran==='reponse')dire(['temps','e-'+P.q.id])},'temps');
+  else dire(['revele','e-'+P.q.id]);
 }
 function juger(ok){
   if(P.juge!==null)return;
   P.juge=ok;P.ok=ok;if(ok){eqCourante().s+=10}
   rendre();var r=1+Math.floor(Math.random()*3);
-  effetPuis(ok?'juste':'faux',function(){if(ecran==='reponse')dire([ok?'bravo-'+r:'encourage-'+r])},1300);
+  effetPuis(ok?'juste':'faux',function(){if(ecran==='reponse')dire([ok?'bravo-'+r:'encourage-'+r])},ok?'bravo-'+r:'encourage-'+r);
+}
+function sortieScene(f){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){f();return}
+  if(scene.classList.contains('joel--sort'))return;scene.classList.add('joel--sort');setTimeout(f,280);
 }
 function suite(){
-  stopVoix();
-  if(P.n>=P.total){ecran='podium';rendre();effetPuis('podium',function(){dire(['podium'])},5800);return}
+  stopVoix();sortieScene(suiteApresSortie);
+}
+function suiteApresSortie(){
+  if(P.n>=P.total){ecran='podium';rendre();effetPuis('podium',function(){if(ecran==='podium')dire(['podium'])},'podium');return}
   P.tour=(P.tour+1)%P.eq.length;lancerTour();
 }
 function joker5050(){
   var eq=eqCourante();if(eq.j5050||P.q.type==='ouverte'||ecran!=='question')return;
   eq.j5050=true;var mauvaises=P.q.choix.map(function(_,i){return i}).filter(function(i){return i!==P.q.bonne});
   P.retirees=melanger(mauvaises).slice(0,P.q.choix.length>=4?2:1);
-  rendre();majMinuteur();effetPuis('joker',function(){dire(['joker-5050'],function(){demarrerMinuteur()})},1300);
+  rendre();majMinuteur();effetPuis('joker',function(){dire(['joker-5050'],function(){demarrerMinuteur()})},'joker-5050');
 }
 function jokerAdulte(){
   var eq=eqCourante();if(eq.jadulte||ecran!=='question')return;
-  eq.jadulte=true;rendre();majMinuteur();effetPuis('joker',function(){dire(['joker-adulte'],function(){demarrerMinuteur()})},1300);
+  eq.jadulte=true;rendre();majMinuteur();effetPuis('joker',function(){dire(['joker-adulte'],function(){demarrerMinuteur()})},'joker-adulte');
 }
 
 /* ---------- Écrans ---------- */
@@ -873,7 +1066,9 @@ R.reponse=function(){
 };
 R.podium=function(){
   var tri=P.eq.slice().sort(function(a,b){return b.s-a.s});
-  function marche(e,rang){return e?'<div class="marche m'+rang+'" style="--c:'+e.c+'"><div class="qui">'+forme(e)+esc(e.n)+'<span class="pts">'+e.s+' points</span></div><div class="socle">'+rang+'</div></div>':''}
+  // Ex aequo : même rang affiché (classement 1, 1, 3), la marche garde sa place
+  function rangDe(e){return 1+P.eq.filter(function(x){return x.s>e.s}).length}
+  function marche(e,place){var rang=e?rangDe(e):0;return e?'<div class="marche m'+place+' r'+rang+'" style="--c:'+e.c+'"><div class="qui">'+forme(e)+esc(e.n)+'<span class="pts">'+e.s+' points</span></div><div class="socle">'+rang+'</div></div>':''}
   var conf='';for(var i=0;i<34;i++){conf+='<i style="left:'+((i*37)%100)+'%;background:'+(P.eq[i%P.eq.length].c)+';animation-delay:'+(-(i*.53)%4).toFixed(2)+'s;animation-duration:'+(3.4+(i%5)*.35).toFixed(2)+'s"></i>'}
   var pod=tri.length===1?marche(tri[0],1):marche(tri[1],2)+marche(tri[0],1)+marche(tri[2],3);
   return '<div class="ecran ecran-podium"><div class="confettis" aria-hidden="true">'+conf+'</div>'
@@ -885,8 +1080,10 @@ R.podium=function(){
 };
 
 /* ---------- Rendu et mise à l'échelle ---------- */
+var ecranPrecedent=null;
 function rendre(){
-  scene.className=(tel()?'tel':'tv')+' niv-'+niveauScene();
+  scene.className=(tel()?'tel':'tv')+' niv-'+niveauScene()+(ecran!==ecranPrecedent?' transition-entree':'');
+  ecranPrecedent=ecran;
   scene.innerHTML=R[ecran]();
   ajuster();
   if(parleEnCours)etatGuide(['parle']);
@@ -910,7 +1107,7 @@ function action(act,v){
     case 'nbeq':{var n=+v;var garde=cfg.actives.slice(0,n);EQUIPES.forEach(function(e){if(garde.length<n&&garde.indexOf(e.k)<0)garde.push(e.k)});
       cfg.actives=EQUIPES.map(function(e){return e.k}).filter(function(k){return garde.indexOf(k)>=0});break}
     case 'niveq':{var o=['petits','moyens','grands'],c=cfg.nivEq[v]||'moyens';cfg.nivEq[v]=o[(o.indexOf(c)+1)%3];break}
-    case 'commencer':ecrire('cfg',cfg);ctx();nouvellePartie();effetPuis('jingle',lancerTour,6000);return;
+    case 'commencer':ecrire('cfg',cfg);ctx();nouvellePartie();effetPuis('jingle',lancerTour,cfg.jeu==='tous'?'debut-tous':'debut');return;
     case 'pret':poser();return;
     case 'rep':repondre(+v);return;
     case 'reveler':reveler(false);return;
@@ -919,7 +1116,7 @@ function action(act,v){
     case 'j5050':joker5050();return;
     case 'jadulte':jokerAdulte();return;
     case 'rejouer':stopVoix();var anc=P.eq;nouvellePartie();lancerTour();return;
-    case 'menu':stopVoix();stopMinuteur();ecran='accueil';rendre();return;
+    case 'menu':stopVoix();stopMinuteur();sortieScene(function(){ecran='accueil';rendre()});return;
   }
   ecrire('cfg',cfg);rendre();
 }
@@ -952,7 +1149,8 @@ var lancer=document.getElementById('lancer');
 document.getElementById('b-lancer').addEventListener('click',function(){
   lancer.hidden=true;ctx();if(AC&&AC.resume)AC.resume();
   try{speechSynthesis.getVoices()}catch(e){}
-  dire(['accueil']);
+  ecranPrecedent=null;rendre();
+  effetPuis('entree',function(){if(ecran==='accueil')dire(['accueil'])},'accueil');
 });
 rendre();
 })();
